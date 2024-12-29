@@ -5,7 +5,9 @@
         <div class="alert alert-danger" style="text-wrap: wrap; overflow-wrap: break-word; word-wrap: break-word;" role="alert">
             <h4 class="alert-heading"><%= err.message %></h4>
             <hr>
+            <% if (process.env.NODE_NEV!=="production") {%>
             <p><%= err.stack %></p>
+            <% } %>
           </div>
     </div>
 </div>
