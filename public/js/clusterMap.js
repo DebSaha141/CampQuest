@@ -2,7 +2,7 @@ maptilersdk.config.apiKey = maptilerApiKey;
 
 const map = new maptilersdk.Map({
     container: 'map',
-    zoom: 2.5,
+    zoom: 2,
     center: [-100, 40],
     style: maptilersdk.MapStyle.DATAVIZ.DARK
 });

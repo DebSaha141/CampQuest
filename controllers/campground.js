@@ -19,10 +19,10 @@ module.exports.createCampground = async (req, res, next) => {
   const campground = new Campground(data);
   campground.geometry = geoData.features[0].geometry;
   campground.author = req.user._id;
-  console.log(req.files);
+  // console.log(req.files);
   campground.image = req.files.map(f => ({ url: f.path, filename: f.filename }));
   await campground.save();
-  console.log(campground);
+  // console.log(campground);
       req.flash("success", "Successfully made a new campground!");
     res.redirect(`/campgrounds/${campground.id}`);
 }
@@ -73,7 +73,7 @@ module.exports.updateCampground=async (req, res) => {
     }
     await updateCampground.updateOne({ $pull: { image: { filename: { $in: req.body.deleteImages } } } });
   }
-  console.log(updateCampground);
+  // console.log(updateCampground);
     req.flash("success", "Successfully updated campground!");
     res.redirect(`/campgrounds/${updateCampground.id}`);
 }
