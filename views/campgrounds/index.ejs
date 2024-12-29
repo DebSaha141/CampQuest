@@ -1,4 +1,5 @@
 <%- layout('layouts/boilerplate') %>
+<div id="map" class="mb-3" style="width:100%; height:400px"/></div>
 <h1>All Camgrounds</h1>
 <a href="/campgrounds/new">Add New Campground</a>
 <div>
@@ -6,7 +7,11 @@
   <div class="card mb-3">
     <div class="row">
       <div class="col-md-4" style="max-height: 100%; display: flex; align-items: center; justify-content: center;">
-        <img class="img-fluid" alt="" src="<%= campground.image %>" style="height: 100%; object-fit: contain;" />
+        <% if (campground.image.length){ %>
+        <img class="img-fluid" alt="" src="<%= campground.image[0].url %>" style="height: 100%; object-fit: contain;" />
+        <% } else { %>
+        <img class="img-fluid" alt="" src="https://res.cloudinary.com/dzabseimd/image/upload/v1735327150/CampQuest/ugmmplq9a1bvhr7b1hso.jpg" style="height: 300px; width: 500px; object-fit: cover;" />
+        <% } %>
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -24,3 +29,10 @@
   </div>
   <% } %>
 </div>
+
+<script>
+  const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+  const campgrounds = {features: <%- JSON.stringify(campgrounds) %>}
+</script>
+<script src="/js/clusterMap.js">
+</script>
