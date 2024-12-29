@@ -18,7 +18,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.MONGODB_URL || "mongodb://localhost:27017/yelp-camp";
-const secretMessage = process.env.SECRET;
+const secretMessage = process.env.SECRET || "thisshouldbeabettersecret!";
 // const dbUrl="mongodb://localhost:27017/yelp-camp";
 
 const campgroundRoutes = require("./routes/campgrounds");
@@ -53,7 +53,7 @@ const store = MongoStore.create({
 store.on("error", function(e){
   console.log("Session Store Error",e);
 })
-
+ 
 
 const sessionConfig = {
   store,
