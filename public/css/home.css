@@ -29,12 +29,22 @@ body{
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.nav-link.active{
-    color:white;
+.navbar .nav-link.active{
+    color:white !important;
     border-bottom:2px solid rgba(255,255,255,0.5);
 }
 
 .btn-light :hover {
     background-color: rgba(255, 255, 255, 0.4); 
     color: rgba(255, 255, 255, 1);
+  }
+
+  @media only screen and (max-width: 980px) { 
+    .navbar .nav-link{
+        border-bottom: none;
+    }
+    
+    .navbar .nav-link.active{
+        border-bottom: none;
+    }  
   }

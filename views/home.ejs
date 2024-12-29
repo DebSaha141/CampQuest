@@ -9,10 +9,22 @@
 </head>
 <body class="d-flex text-white text-center bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div class="d-flex flex-row justify-content-between">
-                <h3 class="float-md-left mb-0">CampQuest</h3>
-                <nav class="nav nav-masthead justfy-content-center float-md-right">
+        <nav class="mb-auto navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a href="/" style="text-decoration: none; color: white;"><h3 class="float-md-left mb-0">CampQuest</h3></a>
+                <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav justfy-content-center float-md-right">
                 <a class="nav-link active" href="#" aria-current="page">Home</a>
                 <a class="nav-link" href="/campgrounds">Campgrounds</a>
                 <% if (!currentUser) {%>
@@ -21,9 +33,10 @@
                 <% } else { %>
                 <a href="/logout" class="nav-link">Logout</a>
                 <% } %>
-            </nav>
+                </div>
+                </div>
             </div>
-        </header>
+        </nav>
 
         <main class="px-3">
             <h1>CampQuest</h1>
