@@ -17,7 +17,8 @@ const User = require("./models/user");
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const MongoStore = require('connect-mongo');
-const dbUrl=process.env.MONGODB_URL || "mongodb://localhost:27017/yelp-camp";
+const dbUrl = process.env.MONGODB_URL || "mongodb://localhost:27017/yelp-camp";
+const secretMessage = process.env.SECRET;
 // const dbUrl="mongodb://localhost:27017/yelp-camp";
 
 const campgroundRoutes = require("./routes/campgrounds");
@@ -45,7 +46,7 @@ const store = MongoStore.create({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
   crypto: {
-      secret: 'thisshouldbeabettersecret!'
+      secret: secretMessage
   }
 });
 
@@ -57,7 +58,7 @@ store.on("error", function(e){
 const sessionConfig = {
   store,
   name: 'session',
-  secret: "thisshouldbeabettersecret!",
+  secret: secretMessage,
   resave: false,
   saveUninitialized: true,
   cookie: {
